@@ -1,25 +1,28 @@
 //utils
 
 function getFrameSrc() {
-    alert(html5Iframe.src)
+    open(html5Iframe.src)
 }
 
-function enableMenu() {
+function toggleMenu() {
+    //enable
+    if(html5Iframe.contentWindow.localStorage.cheats !== '{"showMenu":true}'){
     html5Iframe.contentWindow.localStorage.cheats = '{"showMenu":true}'
     html5Iframe.contentWindow.document.getElementById('settings-gear').click()
     html5Iframe.contentWindow.document.getElementById('cancelBtn').click()
-}
-
-function disableMenu() {
-    html5Iframe.contentWindow.localStorage.cheats = '{"showMenu":false}'
-    html5Iframe.contentWindow.document.getElementById('settings-gear').click()
-    html5Iframe.contentWindow.document.getElementById('cancelBtn').click()
-}
-
-function fix() {
-    html5Iframe.contentWindow.localStorage.clear()
-    html5Iframe.contentWindow.document.getElementById('settings-gear').click()
-    html5Iframe.contentWindow.document.getElementById('cancelBtn').click()
+        document.getElementById('tm').innerHTML='Disable'
+    } else {
+        //disable
+        html5Iframe.contentWindow.localStorage.cheats = '{"showMenu":false}'
+        html5Iframe.contentWindow.document.getElementById('settings-gear').click()
+        html5Iframe.contentWindow.document.getElementById('cancelBtn').click()
+        setTimeout(function(){
+            html5Iframe.contentWindow.localStorage.clear()
+            html5Iframe.contentWindow.document.getElementById('settings-gear').click()
+            html5Iframe.contentWindow.document.getElementById('cancelBtn').click()
+            document.getElementById('tm').innerHTML='Enable'
+        },1000)
+    }
 }
 
 //UI
@@ -73,10 +76,8 @@ UI.innerHTML = `
 		<h1 style="font-size: 32px;">i-Ready Basic Hack</h1>
 		<br>
 		<h2 style="font-size: 25px; font-style: normal !important; color: white !important;">Teacher Menu</h2>
-		<button onclick="enableMenu()">Enable</button>
+		<button id='tm' onclick="toggleMenu()">Toggle</button>
 		<br>
-		<button onclick="disableMenu()">Disable</button>
-    <br>
 		<br>
 		<h2 style="font-size: 25px; font-style: normal !important; color: white !important;">Get i-frame src</h2>
 		<button onclick="getFrameSrc()">Get i-frame src</button>
