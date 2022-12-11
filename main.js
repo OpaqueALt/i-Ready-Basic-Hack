@@ -82,7 +82,7 @@ UI.innerHTML = `
 		<button onclick="getFrameSrc()">Get i-frame src</button>
 		<br>
 		<br>
-    <h2 style="font-size: 25px; font-style: normal !important; color: white !important;">Fix Lesson</h2>
+    <h3 style="font-size: 25px; font-style: normal !important; color: white !important;">press this after skipping</h3>
 		<button onclick="fix()">Fix</button>
 		<br>
 		<br>
