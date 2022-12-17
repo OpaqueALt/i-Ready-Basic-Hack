@@ -25,6 +25,14 @@ function toggleMenu() {
     }
 }
 
+function fix() {
+        //disable
+	html5Iframe.contentWindow.localStorage.clear()
+        html5Iframe.contentWindow.localStorage.cheats = '{"showMenu":false}'
+        html5Iframe.contentWindow.document.getElementById('settings-gear').click()
+        html5Iframe.contentWindow.document.getElementById('cancelBtn').click()
+}
+
 //UI
 function dragElement(elmnt) {
 	var pos1 = 0,
